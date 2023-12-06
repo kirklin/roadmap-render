@@ -1,0 +1,75 @@
+{
+  "name": "roadmap-render",
+  "type": "module",
+  "version": "0.0.0",
+  "packageManager": "pnpm@8.11.0",
+  "description": "_description_",
+  "author": "Kirk Lin <https://github.com/kirklin>",
+  "license": "MIT",
+  "funding": "https://www.buymeacoffee.com/linkirk",
+  "homepage": "https://github.com/kirklin/roadmap-render#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kirklin/roadmap-render.git"
+  },
+  "bugs": "https://github.com/kirklin/roadmap-render/issues",
+  "keywords": [],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*",
+        "./dist/index.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "unbuild",
+    "dev": "unbuild --stub",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prepublishOnly": "nr build",
+    "release": "bumpp",
+    "start": "esno src/index.ts",
+    "test": "vitest",
+    "typecheck": "tsc --noEmit",
+    "prepare": "simple-git-hooks",
+    "up": "taze major -r -w -I"
+  },
+  "devDependencies": {
+    "@antfu/ni": "^0.21.12",
+    "@kirklin/eslint-config": "^1.0.1",
+    "@types/node": "^20.10.3",
+    "bumpp": "^9.2.0",
+    "eslint": "^8.55.0",
+    "esno": "^4.0.0",
+    "lint-staged": "^15.2.0",
+    "pnpm": "^8.11.0",
+    "rimraf": "^5.0.5",
+    "simple-git-hooks": "^2.9.0",
+    "taze": "^0.13.0",
+    "typescript": "^5.3.2",
+    "unbuild": "^2.0.0",
+    "vite": "^5.0.6",
+    "vitest": "^1.0.1"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
+  }
+}
