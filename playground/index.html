@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wireframe Renderer</title>
+</head>
+<style>
+    html, body {
+        margin: 0;
+        padding: 0;
+    }
+    #svgContainer {
+        width: 100vw;
+        height: 100vh;
+    }
+</style>
+<body>
+
+<svg id="svgContainer" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg"></svg>
+
+<script src="../dist/index.js"></script>
+<script>
+    'use strict';
+
+    // 示例数据
+    async function fetchData() {
+        try {
+            const response = await fetch('data.json');
+            if (!response.ok) {
+                throw new Error('Failed to fetch data');
+            }
+            return await response.json();
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    async function renderWireframe() {
+        const wireframe = await fetchData();
+        console.log(wireframe)
+        const svgContainer = document.getElementById('svgContainer');
+        const svgElement = await wireframeJSONToSVG(wireframe);
+        svgContainer.appendChild(svgElement);
+    }
+
+    renderWireframe();
+</script>
+
+</body>
+</html>
